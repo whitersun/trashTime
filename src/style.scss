@@ -1,0 +1,40 @@
+body {
+    font-family: 'Noto Sans TC', 'Playfair Display' serif, 'Quicksand', sans-serif;
+
+}
+
+ion-header {
+    &.ios {
+        ion-toolbar {
+            --background: url('@/assets/images/background.svg');
+            --background-size: cover;
+            --background-position: center;
+            --background-repeat: no-repeat;
+        }
+    }
+
+    &.transparent {
+        ion-toolbar {
+            --background: transparent;
+        }
+    }
+}
+
+ion-content {
+    --background: url('@/assets/images/background.svg') no-repeat center center / cover;
+
+    &.ios .header-collapse-condense ion-toolbar {
+        --background: transparent;
+    }
+
+    ion-infinite-scroll {
+        ion-infinite-scroll-content {
+            ion-spinner {
+                --color: #161616;
+            }
+        }
+    }
+    .infinite-scroll-content-md .infinite-loading-text {
+        color: #161616;
+    }
+}

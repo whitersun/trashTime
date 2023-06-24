@@ -5,7 +5,7 @@ import TabsPage from '../views/TabsPage.vue'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/tabs/tab1'
+    redirect: '/tabs/garbage'
   },
   {
     path: '/tabs/',
@@ -13,11 +13,15 @@ const routes: Array<RouteRecordRaw> = [
     children: [
       {
         path: '',
-        redirect: '/tabs/tab1'
+        redirect: '/tabs/garbage'
       },
       {
-        path: 'tab1',
-        component: () => import('@/views/Tab1Page.vue')
+        path: 'garbage/',
+        name: 'garbagePage',
+        meta: {
+          title: 'Garbage Truck Time List'
+        },
+        component: () => import('@/views/Tab1Page.vue'),
       },
       {
         path: 'tab2',
@@ -28,6 +32,14 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('@/views/Tab3Page.vue')
       }
     ]
+  },
+  {
+    path: '/tabs/garbage/detail/:id',
+    name: 'garbageDetailPage',
+    meta: {
+      title: 'Garbage Truck Time Detail'
+    },
+    component: () => import('@/views/interior/GarbageDetailPage.vue')
   }
 ]
 

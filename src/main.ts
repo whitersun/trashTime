@@ -1,8 +1,12 @@
 import { createApp } from 'vue'
+import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router';
 
-import { IonicVue } from '@ionic/vue';
+import { IonicVue, isPlatform } from '@ionic/vue';
+
+/** Tailwind CSS config */
+import '@/tailwind.scss'
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/vue/css/core.css';
@@ -23,10 +27,27 @@ import '@ionic/vue/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
-const app = createApp(App)
-  .use(IonicVue)
-  .use(router);
-  
+/** global scss */
+import './style.scss'
+
+const pinia = createPinia();
+const app = createApp(App);
+
+app.use(IonicVue)
+  .use(router)
+  .use(pinia);
+
+/** Import default global using components */
+import HeaderComponent from '@/components/Header/HeaderComponent.vue';
+import HeaderInteriorComponent from '@/components/Header/HeaderInteriorComponent.vue';
+
+app.component('headerComponent', HeaderComponent);
+app.component('headerInteriorComponent', HeaderInteriorComponent);
+
+import axios from 'axios';
+axios.defaults.timeout = 5000;
+
+
 router.isReady().then(() => {
   app.mount('#app');
 });

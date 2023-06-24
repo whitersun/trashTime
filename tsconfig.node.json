@@ -2,6 +2,7 @@
   "compilerOptions": {
     "composite": true,
     "module": "ESNext",
+    "noImplicitAny": false,
     "moduleResolution": "Node",
     "allowSyntheticDefaultImports": true
   },
